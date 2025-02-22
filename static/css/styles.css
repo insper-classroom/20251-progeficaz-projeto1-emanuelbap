@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0c0c0c;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #9c0404;
+}
+
+.logo-getit {
+    width: 13rem;
+    margin-top: 3rem;
+}
+
+form {
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fbc02d;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(153, 117, 8, 0.1);
+    width: 50%;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border: 0.2rem;
+    border-radius: 4px;
+    width: 60%;
+}
+
+button, input[type="submit"] {
+    padding: 8px 16px;
+    border: 0.2rem;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: space-around; /* Espaço ao redor dos elementos */
+    padding: 0;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+li {
+    background-color: #410d0d;
+    padding: 10px;
+    margin: 10px;
+    width: 30%; /* Ajuste para caber dois por linha */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    list-style: none; /* Remove os marcadores padrão de lista */
+}
+
+p {
+    color: #ffe11d;
+    font-size: 1.3rem;
+}
+
+h3 {
+    color: rgb(255, 255, 255);
+    font-size: 1.6rem;
+}

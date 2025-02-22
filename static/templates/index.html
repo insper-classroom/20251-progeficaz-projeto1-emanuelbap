@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Get-it</title>
+<link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
 
-<img src="{{{{ url_for('static', filename='img/logo-getit.png') }}}}">
-<p>Como o Post-it, mas com outro verbo</p>
+<img class="logo-getit" src="{{{{ url_for('static', filename='img/logo-getit.png') }}}}">
+<h2> Como o Post-it, mas com outro verbo</h2>
 
 <form action="/submit" method="POST">
-  <label for="titulo">Título</label>
+  <label for="titulo">Detalhes</label>
   <input id="titulo" type="text" name="titulo" />
-  <label for="detalhes">Detalhes</label>
+  <label for="detalhes">Titulo</label>
   <input id="detalhes" name="detalhes" />
   <input type="submit" />
 </form>

@@ -1,6 +1,7 @@
 from utils import load_data, load_template
 from flask import request, redirect, url_for
 from utils import add_note_to_json
+# import sqlite3
 def index():
     note_template = load_template('components/note.html')
     notes_li = [
