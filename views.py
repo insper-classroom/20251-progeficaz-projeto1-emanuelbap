@@ -10,6 +10,25 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+
+def create_table():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    # Criar a tabela notes --> caso ela não exista 
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS notes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            titulo TEXT NOT NULL,
+            detalhes TEXT NOT NULL
+        )
+    ''')
+    # Salvar tudo e fechar o banco de dados 
+    conn.commit()
+    conn.close()
+
+# Execute esta função uma vez para criar a tabela
+create_table()
+
 def index():
     note_template = load_template('components/note.html')
 
@@ -18,11 +37,11 @@ def index():
     cursor = conn.cursor()
 
     # Fazer uma consulta para pegar todos os titulos e detalhes das notas na tabela notes
-    cursor.execute('SELECT titulo, detalhes FROM notes')
-
+    cursor.execute('SELECT id, titulo, detalhes FROM notes')
+    
     # criar uma lista de notas formatadas usando o template html
     notes_li = [
-        note_template.format(title=row['titulo'], details=row['detalhes'])
+        note_template.format(id=row['id'], title=row['titulo'], details=row['detalhes'])
         for row in cursor.fetchall()
     ]
 
@@ -48,20 +67,30 @@ def submit(titulo: str, detalhes: str):
     # Redirecionar o usuário 
     return redirect(url_for('index'))
 
-def create_table():
+def delete_note(note_id: int):
+    # Estabelece a conecção
     conn = get_db_connection()
     cursor = conn.cursor()
-    # Criar a tabela notes --> caso ela não exista 
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS notes (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            titulo TEXT NOT NULL,
-            detalhes TEXT NOT NULL
-        )
-    ''')
-    # Salvar tudo e fechar o banco de dados 
+
+    # Criar um comando SQLite para deletar a nota correspondente ao id 
+    cursor.execute('DELETE FROM notes WHERE id = ?', (note_id,))
+
+    #salvar tudo e fechar o banco de dados 
     conn.commit()
     conn.close()
 
-# Execute esta função uma vez para criar a tabela
-create_table()
+def edit_note_form(note_id: int):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT titulo, detalhes FROM notes WHERE id = ?', (note_id,))
+    note = cursor.fetchone()
+    conn.close()
+    return load_template('edit_note.html').format(id=note_id, title=note['titulo'], details=note['detalhes'])
+
+def edit_note(note_id: int, titulo: str, detalhes: str):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('UPDATE notes SET titulo = ?, detalhes = ? WHERE id = ?', (titulo, detalhes, note_id))
+    conn.commit()
+    conn.close()
+

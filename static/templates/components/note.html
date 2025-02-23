@@ -1,4 +1,12 @@
-<li>
+<div class="note">
+  <div class="note-content">
     <h3>{title}</h3>
     <p>{details}</p>
-  </li>
+  </div>
+  <form class="bot_excluir" action="/delete_note/{id}" method="post">
+      <button type="submit">Excluir</button>
+  </form>
+  <form class="bot_editar" action="/edit_note/{id}" method="get">
+      <button type="submit">Editar</button>
+  </form>
+</div>

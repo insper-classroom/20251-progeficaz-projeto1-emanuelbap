@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Editar Nota</title>
+<link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<h1>Editar Nota</h1>
+<form action="/edit_note/{id}" method="POST">
+  <label for="titulo">Titulo</label>
+  <input id="titulo" type="text" name="titulo" value="{title}" />
+  <label for="detalhes">Detalhes</label>
+  <input id="detalhes" type="text" name="detalhes" value="{details}" />
+  <input type="submit" value="Salvar" />
+</form>
+<a href="/">Cancelar</a>
+</body>
+</html>

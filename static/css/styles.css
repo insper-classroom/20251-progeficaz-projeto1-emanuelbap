@@ -12,6 +12,13 @@ h2 {
     color: #9c0404;
 }
 
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #9c0404;
+    margin-top: 20px;
+}
+
 .logo-getit {
     width: 13rem;
     margin-top: 3rem;
@@ -28,19 +35,26 @@ form {
 
 input[type="text"] {
     padding: 8px;
-    border: 0.2rem;
+    border: 0.2rem solid #000000;
     border-radius: 4px;
     width: 35%;
+    margin: 10px 0;
 }
 
 button, input[type="submit"] {
-    padding: 8px 16px;
-    border: 0.2rem;
+    padding: 10px 20px;
+    border: none;
     background-color: #000000;
     color: #ffffff;
     font-weight: bold;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #333333;
+    transform: scale(1.05);
 }
 
 ul {
@@ -52,15 +66,34 @@ ul {
     margin-right: 20%;
 }
 
-li {
+.note {
     background-color: #410d0d;
     padding: 10px;
     margin: 10px;
-    width: 30%; /* Ajuste para caber dois por linha */
+    width: 30%;
+    max-height: 20rem; 
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: left;
-    list-style: none; /* Remove os marcadores padrão de lista */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.note-content {
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
+    max-height: 15rem; /* Altura máxima para o conteúdo */
+    overflow-x: hidden; /* Esconde a barra de rolagem horizontal */
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Quebra palavras longas */
+}
+
+.note form {
+    display:contents;
+    justify-content: space-between;
+    margin: 1 rem;
+    margin-bottom: 0.5rem;
+    width: 20%;
 }
 
 p {
@@ -71,4 +104,20 @@ p {
 h3 {
     color: rgb(255, 255, 255);
     font-size: 1.6rem;
+}
+
+a {
+    color: #fbc02d;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #fbc02d;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+a:hover {
+    background-color: #fbc02d;
+    color: #0c0c0c;
+    transform: scale(1.05);
 }
